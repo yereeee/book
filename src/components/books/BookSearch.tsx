@@ -35,19 +35,22 @@ export function BookSearch({ onSelect }: BookSearchProps) {
   }
 
   return (
-    <div className="space-y-2">
+    <div className="relative">
       <Input
         placeholder="제목이나 저자로 검색..."
         value={query}
         onChange={handleChange}
       />
-      {loading && <p className="text-xs text-gray-400">검색 중...</p>}
+      {loading && (
+        <p className="absolute right-3 top-2 text-xs text-gray-400">검색 중...</p>
+      )}
       {results.length > 0 && (
-        <ul className="border border-gray-200 rounded-lg divide-y divide-gray-100 max-h-48 overflow-y-auto">
+        <ul className="absolute z-50 left-0 right-0 top-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg divide-y divide-gray-100 max-h-56 overflow-y-auto">
           {results.map((book) => (
             <li
               key={book.id}
               className="flex items-center gap-3 px-3 py-2 hover:bg-gray-50 cursor-pointer"
+              onMouseDown={(e) => e.preventDefault()}
               onClick={() => { onSelect(book); setQuery(''); setResults([]) }}
             >
               {book.thumbnail ? (

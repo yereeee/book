@@ -31,7 +31,7 @@ export function Dialog({ open, onClose, title, children, className }: DialogProp
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
       onClick={(e) => { if (e.target === overlayRef.current) onClose() }}
     >
-      <div className={cn('bg-white rounded-xl shadow-xl w-full max-w-md mx-4 p-6', className)}>
+      <div className={cn('bg-white rounded-xl shadow-xl w-full max-w-md mx-4 p-6 overflow-visible', className)}>
         {title && (
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-base font-semibold text-gray-800">{title}</h2>
