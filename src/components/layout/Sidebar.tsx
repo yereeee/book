@@ -24,7 +24,7 @@ export function Sidebar({
   onAddCategory,
 }: SidebarProps) {
   return (
-    <aside className="w-52 flex-shrink-0 bg-gray-50 border-r border-gray-200 p-3 overflow-y-auto">
+    <aside className="w-52 flex-shrink-0 bg-[#e8e8e8]/80 backdrop-blur-xl border-r border-[#c8c8c8] p-2.5 overflow-y-auto">
       <SidebarSection title="즐겨찾기">
         <SidebarItem
           label="전체"
@@ -55,7 +55,7 @@ export function Sidebar({
         ))}
         <button
           onClick={onAddCategory}
-          className="w-full text-left px-3 py-1.5 text-xs text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-md"
+          className="w-full text-left px-2.5 py-1 text-[13px] text-gray-400 hover:text-gray-600 hover:bg-black/[0.07] rounded-md"
         >
           + 태그 추가
         </button>

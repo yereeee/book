@@ -20,15 +20,15 @@ export function BookFreeformView({ books, onBookClick, onRefresh }: BookFreeform
 
   if (books.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center h-full text-gray-400 gap-2">
+      <div className="flex flex-col items-center justify-center h-full text-gray-400 gap-2 bg-white">
         <span className="text-5xl">📚</span>
-        <p className="text-sm">도서 추가 버튼으로 첫 번째 책을 기록해보세요.</p>
+        <p className="text-sm text-gray-400">도서 추가 버튼으로 첫 번째 책을 기록해보세요.</p>
       </div>
     )
   }
 
   return (
-    <div className="relative w-full h-full min-h-[600px]">
+    <div className="relative w-full h-full min-h-[600px] bg-white">
       {books.map((book) => (
         <BookIcon
           key={book.id}

@@ -64,7 +64,11 @@ export function BookForm({ open, onClose, onSave, statuses, categories, initial 
       await fetch('/api/books', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
+        body: JSON.stringify({
+          ...body,
+          pos_x: Math.floor(Math.random() * 600) + 40,
+          pos_y: Math.floor(Math.random() * 400) + 40,
+        }),
       })
     }
 

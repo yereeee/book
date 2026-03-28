@@ -14,15 +14,17 @@ export function SidebarItem({ label, dot, active, onClick, action }: SidebarItem
   return (
     <div
       className={cn(
-        'group flex items-center gap-2 px-3 py-1.5 rounded-md cursor-pointer select-none text-sm',
-        active ? 'bg-blue-100 text-blue-800 font-medium' : 'text-gray-700 hover:bg-gray-100'
+        'group flex items-center gap-2 px-2.5 py-1 rounded-md cursor-pointer select-none text-[13px]',
+        active
+          ? 'bg-[#0064D2] text-white font-medium'
+          : 'text-[#3a3a3a] hover:bg-black/[0.07]'
       )}
       onClick={onClick}
     >
       {dot ? (
-        <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ backgroundColor: dot }} />
+        <span className="w-3 h-3 rounded-full flex-shrink-0 shadow-sm" style={{ backgroundColor: dot }} />
       ) : (
-        <span className="w-2.5 h-2.5 rounded-full flex-shrink-0 bg-gray-300" />
+        <span className="w-3 h-3 rounded-full flex-shrink-0 bg-gray-300" />
       )}
       <span className="flex-1 truncate">{label}</span>
       {action && (

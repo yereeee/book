@@ -57,3 +57,9 @@ NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 GOOGLE_BOOKS_API_KEY=
 ```
+
+## 스펙 문서
+- 요구사항: docs/requirements.md
+- 설계: docs/design.md  
+- 작업 목록: docs/tasks.md
+- 구현 시 반드시 스펙 문서를 참고할 것
