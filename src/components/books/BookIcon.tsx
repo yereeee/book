@@ -129,7 +129,7 @@ export function BookIcon({ book, onClick, onPositionChange }: BookIconProps) {
               <span
                 key={c.id}
                 className="w-2 h-2 rounded-full flex-shrink-0"
-                style={{ backgroundColor: c.color }}
+                style={{ backgroundColor: c.color ?? undefined }}
               />
             ))}
           </div>
