@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import { GoogleBook } from '@/types'
 import { Input } from '@/components/ui/Input'
 
@@ -12,21 +12,26 @@ export function BookSearch({ onSelect }: BookSearchProps) {
   const [query, setQuery] = useState('')
   const [results, setResults] = useState<GoogleBook[]>([])
   const [loading, setLoading] = useState(false)
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const search = useCallback(async (q: string) => {
     if (!q.trim()) { setResults([]); return }
     setLoading(true)
-    const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`)
-    const data = await res.json()
-    setResults(data)
-    setLoading(false)
+    try {
+      const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`)
+      if (!res.ok) { setResults([]); return }
+      const data = await res.json()
+      setResults(Array.isArray(data) ? data : [])
+    } finally {
+      setLoading(false)
+    }
   }, [])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const v = e.target.value
     setQuery(v)
-    const timer = setTimeout(() => search(v), 400)
-    return () => clearTimeout(timer)
+    if (timerRef.current) clearTimeout(timerRef.current)
+    timerRef.current = setTimeout(() => search(v), 400)
   }
 
   return (
